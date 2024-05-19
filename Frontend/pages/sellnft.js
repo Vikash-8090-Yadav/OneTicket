@@ -226,7 +226,7 @@ const [LIghthouseCid,SetLIghthouseCid] = useState('');
   return (
     <>
     <Navbar/>
-      <div className="min-h-screen py-10 bg-gradient-to-r from-green-700 to-green-300">
+      <div className="min-h-screen py-10 bg-gradient-to-r from-gray-700 to-gray-300">
       
         <div className="container mx-auto mt-3">
           <div className="flex w-8/12 bg-white flex-col md:flex-row rounded-xl mx-auto shadow-lg overflow-hidden">
