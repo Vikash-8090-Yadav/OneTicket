@@ -70,18 +70,17 @@ const Buy = ({ state }) => {
         
         <div className = "flex flex-col p-4 justify-center max-w-screen-lg mx-auto ">
             <div className = " mn pb-8">
-                <p className = "text-4xl font-bold text-center  flex items-center justify-center">COMMENT !!
+                <p className = "text-4xl font-bold text-center  flex items-center justify-center">Share your experiene !!
                   {/* <Image src = {Coffee} height="50" width="50" className = "mx-3 transform flip-horizontal" /> */}
                 </p>
-                <p className = "py-6 text-center text-xl font-semibold">Comment and Enjoy!! .</p>
             </div>
 
             <div className = "flex justify-center items-center">
                 <form  onSubmit={buyChai} className = "flex flex-col w-full md:w-1/2">
-                    <input type = "text" id = "name" placeholder = "Enter Item name" className = "p-2 bg-transparent border-2 border-white rounded-md focus:outline-none text-white" />
-                    <textarea placeholder = "Enter your Review Message" id = "message" rows = "8" className = "p-2 bg-transparent border-2 border-white rounded-md focus:outline-none text-white" />
+                    <input type = "text" id = "name" placeholder = "Enter Event name" className = "p-2 bg-transparent border-2 border-white rounded-md focus:outline-none text-white" />
+                    <textarea placeholder = "Enter your  Message" id = "message" rows = "8" className = "p-2 bg-transparent border-2 border-white rounded-md focus:outline-none text-white" />
                     <button  type="submit"
-                  disabled={!state.contract} className = " btn btn-primary px-6 py-6 bg-gradient-to-b from-cyan-500 to-blue-500 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-150 text-white  font-semibold" >Complete Review and Get Direct NFT </button>
+                  disabled={!state.contract} className = " btn btn-primary px-6 py-6 bg-gradient-to-b from-cyan-500 to-blue-500 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-150 text-white  font-semibold" > Share your experience!! </button>
                 </form>
             </div>
         </div>

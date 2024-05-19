@@ -238,15 +238,15 @@ const [LIghthouseCid,SetLIghthouseCid] = useState('');
             <p className="mb-3">List your event</p>
             <form>
               <div className="mt-5">
-                <input placeholder="ITEM Name" className="border-2 border-black rounded p-4 mb-2 w-full" onChange={(e) => updateFormInput({ ...formInput, name: e.target.value })}/>
+                <input placeholder="Event Name" className="border-2 border-black rounded p-4 mb-2 w-full" onChange={(e) => updateFormInput({ ...formInput, name: e.target.value })}/>
               </div>
 
               <div className="mt-5">
-                <textarea placeholder="ITEM Description" className="border-2 border-black rounded p-4 mb-2 w-full" onChange={(e) => updateFormInput({ ...formInput, description: e.target.value })}/>  
+                <textarea placeholder="Event Description" className="border-2 border-black rounded p-4 mb-2 w-full" onChange={(e) => updateFormInput({ ...formInput, description: e.target.value })}/>  
               </div>
               
               <div className="mt-5">
-                <input placeholder="ITEM Price in ETH" className="border-2 border-black rounded p-4 mb-2 w-full" onChange={(e) => updateFormInput({ ...formInput, price: e.target.value })}/>  
+                <input placeholder="Event Price in ETH" className="border-2 border-black rounded p-4 mb-2 w-full" onChange={(e) => updateFormInput({ ...formInput, price: e.target.value })}/>  
               </div>
               
               <div className="mt-5">
