@@ -235,7 +235,7 @@ const [LIghthouseCid,SetLIghthouseCid] = useState('');
           <Image src = {basic} className = "w-full rounded-t-md duration-200 hover:scale-110 hover:overflow-hidden" />
           </div>
           <div className="md:w-1/2 py-10 px-12">
-            <p className="mb-3">Sell your ITEM and get paid.</p>
+            <p className="mb-3">List your event</p>
             <form>
               <div className="mt-5">
                 <input placeholder="ITEM Name" className="border-2 border-black rounded p-4 mb-2 w-full" onChange={(e) => updateFormInput({ ...formInput, name: e.target.value })}/>
@@ -251,7 +251,7 @@ const [LIghthouseCid,SetLIghthouseCid] = useState('');
               
               <div className="mt-5">
 							  <label className="block text-sm font-medium text-gray-700 name1">
-								  Select ITEM Image
+								  Select event Image
 							  </label>
 							  <div className="mt-1 flex items-center border-2 border-black">
 								  <span className="inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
@@ -274,7 +274,7 @@ const [LIghthouseCid,SetLIghthouseCid] = useState('');
 								</button>
 							) : uploaded == false ? (
 								<button className="rounded-xl bg-green-600 button mt-3" onClick={listNFTForSale}>
-								  SELL MY ITEM 
+								  Create Ticket 
 							  </button>
 							) : (
 								<button style={{ cursor: "no-drop" }} className="button">
