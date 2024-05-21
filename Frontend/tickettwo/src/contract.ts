@@ -8,8 +8,10 @@ import {
   MarketItemCreated as MarketItemCreatedEvent,
   MarketSale as MarketSaleEvent,
   MetadataUpdate as MetadataUpdateEvent,
+  TokenItem as TokenItemEvent,
   TokenResold as TokenResoldEvent,
-  Transfer as TransferEvent
+  Transfer as TransferEvent,
+  _updateData as _updateDataEvent
 } from "../generated/Contract/Contract"
 import {
   Approval,
@@ -21,8 +23,10 @@ import {
   MarketItemCreated,
   MarketSale,
   MetadataUpdate,
+  TokenItem,
   TokenResold,
-  Transfer
+  Transfer,
+  _updateData
 } from "../generated/schema"
 
 export function handleApproval(event: ApprovalEvent): void {
@@ -166,6 +170,21 @@ export function handleMetadataUpdate(event: MetadataUpdateEvent): void {
   entity.save()
 }
 
+export function handleTokenItem(event: TokenItemEvent): void {
+  let entity = new TokenItem(
+    event.transaction.hash.concatI32(event.logIndex.toI32())
+  )
+  entity.tokenURI = event.params.tokenURI
+  entity.price = event.params.price
+  entity.newTokenId = event.params.newTokenId
+
+  entity.blockNumber = event.block.number
+  entity.blockTimestamp = event.block.timestamp
+  entity.transactionHash = event.transaction.hash
+
+  entity.save()
+}
+
 export function handleTokenResold(event: TokenResoldEvent): void {
   let entity = new TokenResold(
     event.transaction.hash.concatI32(event.logIndex.toI32())
@@ -189,6 +208,22 @@ export function handleTransfer(event: TransferEvent): void {
   entity.from = event.params.from
   entity.to = event.params.to
   entity.tokenId = event.params.tokenId
+
+  entity.blockNumber = event.block.number
+  entity.blockTimestamp = event.block.timestamp
+  entity.transactionHash = event.transaction.hash
+
+  entity.save()
+}
+
+export function handle_updateData(event: _updateDataEvent): void {
+  let entity = new _updateData(
+    event.transaction.hash.concatI32(event.logIndex.toI32())
+  )
+  entity.func = event.params.func
+  entity.txn = event.params.txn
+  entity.timestamp = event.params.timestamp
+  entity.buyer = event.params.buyer
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp

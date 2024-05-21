@@ -8,9 +8,9 @@ dataSources:
     name: Contract
     network: scroll-sepolia
     source:
-      address: "0x9CC5fF4Fea595588Beca404bbae658dB7FE75fD3"
+      address: "0x8d34e7A45329A81157b3A24397e752fD40888FBD"
       abi: Contract
-      startBlock: 4347602
+      startBlock: 4347869
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -25,8 +25,10 @@ dataSources:
         - MarketItemCreated
         - MarketSale
         - MetadataUpdate
+        - TokenItem
         - TokenResold
         - Transfer
+        - _updateData
       abis:
         - name: Contract
           file: ./abis/Contract.json
@@ -49,8 +51,12 @@ dataSources:
           handler: handleMarketSale
         - event: MetadataUpdate(uint256)
           handler: handleMetadataUpdate
+        - event: TokenItem(string,uint256,uint256)
+          handler: handleTokenItem
         - event: TokenResold(indexed uint256,address,address,uint256)
           handler: handleTokenResold
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
+        - event: _updateData(string,string,uint256,address)
+          handler: handle_updateData
       file: ./src/contract.ts

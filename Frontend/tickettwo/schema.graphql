@@ -90,6 +90,16 @@ type MetadataUpdate @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
+type TokenItem @entity(immutable: true) {
+  id: Bytes!
+  tokenURI: String! # string
+  price: BigInt! # uint256
+  newTokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
 type TokenResold @entity(immutable: true) {
   id: Bytes!
   tokenId: BigInt! # uint256
@@ -106,6 +116,17 @@ type Transfer @entity(immutable: true) {
   from: Bytes! # address
   to: Bytes! # address
   tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type _updateData @entity(immutable: true) {
+  id: Bytes!
+  func: String! # string
+  txn: String! # string
+  timestamp: BigInt! # uint256
+  buyer: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

@@ -10,8 +10,10 @@ import {
   MarketItemCreated,
   MarketSale,
   MetadataUpdate,
+  TokenItem,
   TokenResold,
-  Transfer
+  Transfer,
+  _updateData
 } from "../generated/Contract/Contract"
 
 export function createApprovalEvent(
@@ -245,6 +247,31 @@ export function createMetadataUpdateEvent(_tokenId: BigInt): MetadataUpdate {
   return metadataUpdateEvent
 }
 
+export function createTokenItemEvent(
+  tokenURI: string,
+  price: BigInt,
+  newTokenId: BigInt
+): TokenItem {
+  let tokenItemEvent = changetype<TokenItem>(newMockEvent())
+
+  tokenItemEvent.parameters = new Array()
+
+  tokenItemEvent.parameters.push(
+    new ethereum.EventParam("tokenURI", ethereum.Value.fromString(tokenURI))
+  )
+  tokenItemEvent.parameters.push(
+    new ethereum.EventParam("price", ethereum.Value.fromUnsignedBigInt(price))
+  )
+  tokenItemEvent.parameters.push(
+    new ethereum.EventParam(
+      "newTokenId",
+      ethereum.Value.fromUnsignedBigInt(newTokenId)
+    )
+  )
+
+  return tokenItemEvent
+}
+
 export function createTokenResoldEvent(
   tokenId: BigInt,
   seller: Address,
@@ -297,4 +324,33 @@ export function createTransferEvent(
   )
 
   return transferEvent
+}
+
+export function create_updateDataEvent(
+  func: string,
+  txn: string,
+  timestamp: BigInt,
+  buyer: Address
+): _updateData {
+  let updateDataEvent = changetype<_updateData>(newMockEvent())
+
+  updateDataEvent.parameters = new Array()
+
+  updateDataEvent.parameters.push(
+    new ethereum.EventParam("func", ethereum.Value.fromString(func))
+  )
+  updateDataEvent.parameters.push(
+    new ethereum.EventParam("txn", ethereum.Value.fromString(txn))
+  )
+  updateDataEvent.parameters.push(
+    new ethereum.EventParam(
+      "timestamp",
+      ethereum.Value.fromUnsignedBigInt(timestamp)
+    )
+  )
+  updateDataEvent.parameters.push(
+    new ethereum.EventParam("buyer", ethereum.Value.fromAddress(buyer))
+  )
+
+  return updateDataEvent
 }
