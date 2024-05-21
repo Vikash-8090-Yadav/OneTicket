@@ -624,8 +624,8 @@
       ]
     },
     "/home/vishal/Desktop/allgitfiles/OneTicket/SmartContract/contracts/NFTMarketplace.sol": {
-      "lastModificationDate": 1716154091565,
-      "contentHash": "5b7a01c3577cf8f67f654ac141cc993e",
+      "lastModificationDate": 1716323838852,
+      "contentHash": "1d1c5d4d4b352b9f1fa6e9143895f8ff",
       "sourceName": "contracts/NFTMarketplace.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -656,7 +656,7 @@
         "@openzeppelin/contracts/token/ERC721/ERC721.sol"
       ],
       "versionPragmas": [
-        "^0.8.10"
+        "^0.8.4"
       ],
       "artifacts": [
         "NFTMarketplace"

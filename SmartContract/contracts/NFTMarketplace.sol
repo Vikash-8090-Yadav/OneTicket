@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.10;
+pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -18,10 +18,13 @@ contract NFTMarketplace is ERC721URIStorage {
 
     event Donation(address indexed from, string name, string message, uint256 timestamp, uint256 amount);
     event MarketItemCreated(uint256 indexed tokenId, address seller, address owner, uint256 price, bool sold);
+    event TokenItem(string tokenURI, uint256 price,uint256 newTokenId);
     event TokenResold(uint256 indexed tokenId, address seller, address owner, uint256 price);
     event MarketSale(uint256 indexed tokenId, address buyer, address seller, uint256 price);
     event ListingPriceUpdated(uint256 newPrice);
     event ChaiBought(string name, string message, uint256 timestamp, address buyer, uint256 amount);
+
+    event _updateData(string func, string txn,uint256 timestamp, address buyer);
 
     struct Memo {
         string name;
@@ -64,6 +67,8 @@ contract NFTMarketplace is ERC721URIStorage {
         _mint(msg.sender, newTokenId);
         _setTokenURI(newTokenId, tokenURI);
         createMarketItem(newTokenId, price);
+
+        emit TokenItem(tokenURI,price,newTokenId);
 
         return newTokenId;
     }
@@ -192,7 +197,15 @@ contract NFTMarketplace is ERC721URIStorage {
         memos.push(Memo(name, message, cid, block.timestamp, msg.sender)); // Now we will add that donator to our donators list
 
         // Emit the Donation event
+
+         emit Donation(msg.sender, name, message, block.timestamp, msg.value);
         
+    }
+
+    function updateData(string memory func, string memory txn)public {
+
+
+        emit _updateData(func,txn,block.timestamp,msg.sender);
     }
 
     // You can get a list of all donators and the total holdings of funds by this function on the frontend
