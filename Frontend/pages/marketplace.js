@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from 'web3modal'
 import Navbar from "../Component/Course/Nav";
-
+import { createClient } from "urql";
 import { ToastContainer, toast } from 'react-toastify';
 import { notification } from 'antd';
 
@@ -24,43 +24,78 @@ import NFTMarketplace from '../abi/marketplace.json'
 export default function Home() {
   const [nfts, setNfts] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
-  useEffect(() => {
-    loadNFTs()
-  }, [])
-  async function loadNFTs() {
-    /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send('eth_requestAccounts', []);
-    const signer = provider.getSigner();
-    
-    const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, provider)
-    const data = await contract.fetchMarketItems()
+  const [isLoading, setIsLoading] = useState(true); 
+  const [tokens, setTokens] = useState([]);
 
-    /*
-    *  map over items returned from smart contract and format 
-    *  them as well as fetch their token metadata
-    */
-    const items = await Promise.all(data.map(async i => {
-      const tokenUri = await contract.tokenURI(i.tokenId)
-      const meta = await axios.get(tokenUri)
-      let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
-      let item = {
+
+  
+  const QueryURL = "https://api.studio.thegraph.com/query/67475/tickettwo/v0.0.1";
+
+  let query = `
+    {
+      tokenItems {
+      tokenURI
+      price
+      newTokenId
+      transactionHash
+      }
+    }
+  `;
+
+  const client = createClient({
+    url: QueryURL
+  });
+
+  useEffect(() => {
+  if (!client) {
+    return;
+  }
+
+  const getTokens = async () => {  
+    
+    try {
+      const { data } = await client.query(query).toPromise();
+      setTokens(data.tokenItems);
+      // console.log(data.tokenItems);
+      setIsLoading(false); // Data is loaded
+      await loadNFTs();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  getTokens();
+  // fetchNftTransactions();
+}, [client]);
+
+async function loadNFTs() {
+  // await test();
+  
+  try {
+
+    const items = await Promise.all(tokens.map(async token => {
+      // alert("try")
+      const meta = await axios.get(token.tokenURI);
+      console.log("The i item is".meta);
+      const price = await token.price / 10 ** 18;
+      const tokenId = await token.newTokenId;
+      // alert("inside try")
+      return {
         price,
-        tokenId: i.tokenId.toNumber(),
-        seller: i.seller,
-        owner: i.owner,
+        tokenId,
         image: meta.data.image,
         name: meta.data.name,
         description: meta.data.description,
-        cid1:meta.data.cid1,
-      }
-      console.log(item)
-      return item
-    }))
-    console.log(items);
-    setNfts(items)
-    setLoadingState('loaded') 
+      };
+    }));
+    
+    setNfts(items);
+    setLoadingState('loaded');
+  } catch (error) {
+    console.error("Error loading NFTs:", error);
+    setLoadingState('error');
   }
+}
   async function buyNft(nft) {
     /* needs the user to sign the transaction, so will use Web3Provider and sign it */
     const provider = new ethers.providers.Web3Provider(window.ethereum);
