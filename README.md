@@ -1,20 +1,20 @@
 
-![Screenshot from 2024-04-29 22-34-18](https://github.com/Vikash-8090-Yadav/Vortex2024/assets/85225156/2dcb4667-a18a-4a3b-bc5c-de9656b67d9e)
+![Screenshot from 2024-05-27 10-38-47](https://github.com/Vikash-8090-Yadav/OneTicket/assets/85225156/d5059dfa-86c9-4b9d-a6d9-1057bd79bc1e)
 
 
-### Demo Video: https://youtu.be/49tyju_PtUQ
 
-### Frontend Deploy Link: 
+# Demo Video: https://youtu.be/49tyju_PtUQ
+
+# Frontend Deploy Link: https://one-ticket.vercel.app/
 
 
 ## Introduction 
 
 OneTicket is a revolutionary platform that allows users to create tickets for their events, resell tickets, and share their event experiences in a dedicated dashboard. This platform eliminates intermediaries, empowering users to manage their events and ticketing seamlessly.
 
-## Contract Info 
+## Contract Info ->  The  smart contract  is deployed ons scroll sepolia
 
 Contract Address: 0x8d34e7A45329A81157b3A24397e752fD40888FBD
-
 
 
 ## Working Flow !!
@@ -52,23 +52,28 @@ I created subgraph for this prroject and query  to make various dashboard like  
 
 - Any user can buy the ticket and can attend the event
 
+![Screenshot from 2024-05-27 10-38-47](https://github.com/Vikash-8090-Yadav/OneTicket/assets/85225156/4572494f-5d3f-470e-9a83-4f76942697fa)
 
 
 ## Creat Event 
 
 - Any  owner can create the ticket for their event
 
+![Screenshot from 2024-05-27 10-40-33](https://github.com/Vikash-8090-Yadav/OneTicket/assets/85225156/60be4e17-b976-4652-9089-49666bed0567)
 
 
 ## Re sell 
 
 - Any user who buys the ticket can re sell it to the one who needs it
 
+![Screenshot from 2024-05-27 10-41-03](https://github.com/Vikash-8090-Yadav/OneTicket/assets/85225156/b815ba4d-353a-42a1-bd9b-f12415c0193b)
+
 
 ## Experience share 
 
 - Any member can share their after event experience
 
+![Screenshot from 2024-05-27 10-41-26](https://github.com/Vikash-8090-Yadav/OneTicket/assets/85225156/1487f135-125b-40a1-b178-d24abd3312ff)
 
  
 
