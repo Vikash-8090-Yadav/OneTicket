@@ -108,7 +108,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div className="hidden bg-green-500 md:flex text-9010FF text-1xl nav-item font-bold font-serif justify-center items-center text-black h-8">
+      <div className="hidden bg-yellow-500 md:flex text-9010FF text-1xl nav-item font-bold font-serif justify-center items-center text-black h-8">
         <NavLink to="/Market">HOME</NavLink>
         <NavLink to ="/sellnft">Create Event</NavLink>
         <NavLink to ="/mynft">MY Ticket</NavLink>
