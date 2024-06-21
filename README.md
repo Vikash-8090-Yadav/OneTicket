@@ -1,6 +1,4 @@
 
-# [WINNER}
-
 ![Screenshot from 2024-05-27 10-38-47](https://github.com/Vikash-8090-Yadav/OneTicket/assets/85225156/d5059dfa-86c9-4b9d-a6d9-1057bd79bc1e)
 
 
