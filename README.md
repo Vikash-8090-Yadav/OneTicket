@@ -8,6 +8,7 @@
 # Frontend Deploy Link: https://one-ticket.vercel.app/
 
 
+
 ## Introduction 
 
 OneTicket is a revolutionary platform that allows users to create tickets for their events, resell tickets, and share their event experiences in a dedicated dashboard. This platform eliminates intermediaries, empowering users to manage their events and ticketing seamlessly.
