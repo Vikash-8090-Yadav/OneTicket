@@ -20,6 +20,8 @@ import NFTMarketplace from '../abi/marketplace.json'
 
 export default function CreatorDashboard() {
   const [nfts, setNfts] = useState([])
+
+  
   const [loadingState, setLoadingState] = useState('not-loaded')
   useEffect(() => {
     loadNFTs()
